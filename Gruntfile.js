@@ -80,7 +80,15 @@ module.exports = function (grunt) {
 					livereload: true
 				}
 			}
-		}
+		},
+		bgShell: {
+			_defaults: {
+				bg: false
+			},
+			clean: {
+				cmd: "find . -wholename './node_modules' -prune -o -name '*~' -exec rm {} \\;"
+			}
+		},
 	});
 	
 	grunt.loadNpmTasks('grunt-contrib-jshint');
@@ -89,5 +97,8 @@ module.exports = function (grunt) {
 	
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	
+	grunt.loadNpmTasks('grunt-bg-shell');
+	
+	grunt.registerTask('clean', ['bgShell:clean']);
   grunt.registerTask('default', ['watch']);
 };

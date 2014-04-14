@@ -17,7 +17,9 @@
     "grunt": ">0.0.0",
     "grunt-contrib-jshint": ">0.0.0",
     "grunt-contrib-less": ">0.0.0",
-    "grunt-contrib-watch": ">0.0.0"
+    "grunt-contrib-watch": ">0.0.0",
+    "grunt-contrib-commands": ">0.0.0",
+    "grunt-bg-shell": ">0.0.0"
   },
   "license": "MIT",
   "engines": {
