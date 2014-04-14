@@ -14,8 +14,10 @@
     "express": "4.0.x"
   },
   "devDependencies": {
-    "grunt": "0.4.x",
-    "grunt-contrib-jshint": "0.10.x"
+    "grunt": ">0.0.0",
+    "grunt-contrib-jshint": ">0.0.0",
+    "grunt-contrib-less": ">0.0.0",
+    "grunt-contrib-watch": ">0.0.0"
   },
   "license": "MIT",
   "engines": {
