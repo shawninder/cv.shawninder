@@ -77,13 +77,13 @@ module.exports = function (grunt) {
 			}
 		},
 		watch: {
+			options: {
+				interrupt: true,
+				livereload: true
+			},
 			styles: {
 				files: 'src/client/*.less',
-				tasks: ['less'],
-				options: {
-					interrupt: true,
-					livereload: true
-				}
+				tasks: ['less']
 			},
 			markup: {
 				files: 'src/client/*.html',
@@ -111,6 +111,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	
 	grunt.registerTask('removeBackups', ['bgShell:removeBackups']);
-	grunt.registerTask('build', ['jshint', 'copy', 'less']);
+	grunt.registerTask('build', ['jshint', 'less', 'copy']);
   grunt.registerTask('default', ['watch']);
 };
