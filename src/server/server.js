@@ -2,9 +2,9 @@ var express = require('express'),
 	app = express(),
 	config = require('./config.js'),
 	routes = require('./routes.js'),
-	staticFileFolder = __dirname + '/../../build';
+	staticFileFolder = __dirname + '/public';
 
-app.use(express.static(staticFileFolder));
+app.use(express['static'](staticFileFolder));
 
 routes.setup(app);
 

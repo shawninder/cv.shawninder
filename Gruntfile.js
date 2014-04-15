@@ -57,48 +57,60 @@ module.exports = function (grunt) {
 						expand: true,
 						cwd: 'src/client/',
 						src: ['*.less'],
-						dest: 'builds/dev',
+						dest: 'builds/dev/public',
 						ext: '.css',
 						extDot: 'first'
 					}
 				]
 			}
 		},
-		watch: {
-			scripts: {
-				files: 'src/**/*.js',
-				tasks: ['jshint'],
-				options: {
-					interrupt: true
-				}
+		copy: {
+			html: {
+				files: [
+					{ expand: true, cwd: 'src/client/', src: '*.html', dest: 'builds/dev/public', filter: 'isFile' }
+				]
 			},
+			server: {
+				files: [
+					{ expand: true, cwd: 'src/server/', src: '*.js', dest: 'builds/dev/', filter: 'isFile' }
+				]
+			}
+		},
+		watch: {
 			styles: {
-				files: 'src/**/*.less',
+				files: 'src/client/*.less',
 				tasks: ['less'],
 				options: {
 					interrupt: true,
 					livereload: true
 				}
+			},
+			markup: {
+				files: 'src/client/*.html',
+				tasks: ['copy:html']
+			},
+			server: {
+				files: 'src/server/*.js',
+				tasks: ['copy:server']
 			}
 		},
 		bgShell: {
 			_defaults: {
 				bg: false
 			},
-			clean: {
+			removeBackups: {
 				cmd: "find . -wholename './node_modules' -prune -o -name '*~' -exec rm {} \\;"
 			}
-		},
+		}
 	});
 	
 	grunt.loadNpmTasks('grunt-contrib-jshint');
-	
 	grunt.loadNpmTasks('grunt-contrib-less');
-	
 	grunt.loadNpmTasks('grunt-contrib-watch');
-	
 	grunt.loadNpmTasks('grunt-bg-shell');
+	grunt.loadNpmTasks('grunt-contrib-copy');
 	
-	grunt.registerTask('clean', ['bgShell:clean']);
+	grunt.registerTask('removeBackups', ['bgShell:removeBackups']);
+	grunt.registerTask('build', ['jshint', 'copy', 'less']);
   grunt.registerTask('default', ['watch']);
 };
