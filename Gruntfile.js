@@ -74,12 +74,16 @@ module.exports = function (grunt) {
 				files: [
 					{ expand: true, cwd: 'src/server/', src: '*.js', dest: 'builds/dev/', filter: 'isFile' }
 				]
+			},
+			client: {
+				files: [
+					{ expand: true, cwd: 'src/client/', src: '*.js', dest: 'builds/dev/public/', filter: 'isFile' }
+				]
 			}
 		},
 		watch: {
 			options: {
-				interrupt: true,
-				livereload: true
+				interrupt: true
 			},
 			styles: {
 				files: 'src/client/*.less',
@@ -92,6 +96,16 @@ module.exports = function (grunt) {
 			server: {
 				files: 'src/server/*.js',
 				tasks: ['copy:server']
+			},
+			client: {
+				files: 'src/client/*.js',
+				tasks: ['copy:client']
+			},
+			staticFiles: {
+				files: 'builds/dev/public/*',
+				options: {
+					livereload: true
+				}
 			}
 		},
 		bgShell: {
@@ -110,7 +124,7 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-bg-shell');
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	
-	grunt.registerTask('removeBackups', ['bgShell:removeBackups']);
+	grunt.registerTask('rm~', ['bgShell:removeBackups']);
 	grunt.registerTask('build', ['jshint', 'less', 'copy']);
   grunt.registerTask('default', ['watch']);
 };
