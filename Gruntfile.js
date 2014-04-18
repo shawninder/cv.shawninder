@@ -67,7 +67,12 @@ module.exports = function (grunt) {
 		copy: {
 			html: {
 				files: [
-					{ expand: true, cwd: 'src/client/', src: '*.html', dest: 'builds/dev/public', filter: 'isFile' }
+					{ expand: true, cwd: 'src/client/', src: '*.html', dest: 'builds/dev/public/', filter: 'isFile' }
+				]
+			},
+			lib: {
+				files: [
+					{ expand: true, cwd: 'src/lib/', src: '*.js', dest: 'builds/dev/public/', filter: 'isFile' }
 				]
 			},
 			server: {
@@ -83,7 +88,8 @@ module.exports = function (grunt) {
 		},
 		watch: {
 			options: {
-				interrupt: true
+				interrupt: true,
+				event: ['all'],
 			},
 			styles: {
 				files: 'src/client/*.less',
@@ -92,6 +98,10 @@ module.exports = function (grunt) {
 			markup: {
 				files: 'src/client/*.html',
 				tasks: ['copy:html']
+			},
+			lib: {
+				files: 'src/lib/*.js',
+				tasks: ['copy:lib']
 			},
 			server: {
 				files: 'src/server/*.js',
