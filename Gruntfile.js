@@ -28,7 +28,9 @@ module.exports = function (grunt) {
 				// relaxing
 				laxcomma: true,
 				// environment
-				devel: true
+				devel: true,
+				
+				predef: ['require']
 			},
 			gruntfile: {
 				src: 'Gruntfile.js',
@@ -82,14 +84,14 @@ module.exports = function (grunt) {
 			},
 			client: {
 				files: [
-					{ expand: true, cwd: 'src/client/', src: '*.js', dest: 'builds/dev/public/', filter: 'isFile' }
+					{ expand: true, cwd: 'src/client/', src: '**/*.js', dest: 'builds/dev/public/', filter: 'isFile' }
 				]
 			}
 		},
 		watch: {
 			options: {
 				interrupt: true,
-				event: ['all'],
+				event: ['all']
 			},
 			styles: {
 				files: 'src/client/*.less',
@@ -108,7 +110,7 @@ module.exports = function (grunt) {
 				tasks: ['copy:server']
 			},
 			client: {
-				files: 'src/client/*.js',
+				files: 'src/client/**/*.js',
 				tasks: ['copy:client']
 			},
 			staticFiles: {
