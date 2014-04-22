@@ -1,6 +1,6 @@
 require([
 	"jquery",
-	"apps/Customizer"
+	"apps/customizer/Customizer"
 ], function ($, Customizer) {
 	$(function () {
 		Customizer.addRegions({
