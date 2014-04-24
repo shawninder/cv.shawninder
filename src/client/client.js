@@ -6,5 +6,6 @@ require([
 		Customizer.addRegions({
 			mainRegion: "#content"
 		});
+		Customizer.start();
 	});
 });
