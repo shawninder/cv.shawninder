@@ -1,5 +1,5 @@
 define(["backbone", "Marionette"], function (backbone, Marionette) {
-	Customizer = new Marionette.Application();
+	var Customizer = new backbone.Marionette.Application();
 	
 	return Customizer;
 });
