@@ -137,6 +137,6 @@ module.exports = function (grunt) {
 	grunt.loadNpmTasks('grunt-contrib-copy');
 	
 	grunt.registerTask('rm~', ['bgShell:removeBackups']);
-	grunt.registerTask('build', ['jshint', 'less', 'copy']);
+	grunt.registerTask('build', ['less', 'copy']);
   grunt.registerTask('default', ['watch']);
 };
