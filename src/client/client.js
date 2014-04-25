@@ -1,11 +1,11 @@
 require([
 	"jquery",
-	"apps/customizer/Customizer"
-], function ($, Customizer) {
+	"App",
+], function ($, App) {
 	$(function () {
-		Customizer.addRegions({
-			mainRegion: "#content"
+		App.addRegions({
+			"mainRegion": "#content"
 		});
-		Customizer.start();
+		App.start();
 	});
 });
