@@ -1,3 +1,5 @@
+*This project has been discontinued before reaching a usable state. I have too much work now and no time to make this CV website, which is kind of a sign that I don't need the CV in the first place ;)*
+
 cv.shawninder
 =============
 This website aims to offer easy access to my CV.
